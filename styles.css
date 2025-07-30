@@ -73,38 +73,39 @@ footer {
   border-top: 1px solid #ddd;
 }
 
-.card-row {
-  display: flex;
-  flex-wrap: wrap;
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr));
   gap: 2rem;
-  justify-content: center;
   margin-bottom: 2rem;
 }
 
+@media (max-width: 700px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
 .card{
-  flex: 1 1 300px;
-  max-width: 340px;
-  min-width: 250px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(40,82,122,0.1);
-  padding: 1.2rem 2rem;
-  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@media (max-width: 900px) {
-  .card-row {
-    gap: 1rem;
-  }
-  
-  .card {
-    max-width: 100%;
-  }
+main{
+  padding: 1.5rem;
+  box-sizing: border-box
 }
 
-@media (max-width: 600px) {
-  .card-row {
-    flex-direction: column;
-    align-items: stretch;
+@media  (max-width: 600px) {
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 0.9rem;
+  }
+  th, td {
+    min-width: 120px;
+    padding: 0.7rem 0.5rem;
   }
 }
