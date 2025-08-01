@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return; 
         }
 
-        if(message.length < 3) {
-            alert('Message must be at least 3 characters long');
+        if(message.length < 5) {
+            alert('Message must be at least 5 characters long');
             messageInput.focus();
             return; 
         }
