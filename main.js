@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const emails = Array.from(table.querySelectorAll('td:nth-child(3)')).map(td => td.textContent());
+        const emails = Array.from(table.querySelectorAll('td:nth-child(3)')).map(td => td.textContent);
         if (emails.includes(email.value.trim())) {
             alert('This email is already in the directory.');
             return;
         }
         
         const newRow = table.insertRow(-1);
-        newRow.insertCell(0).textContent = name;
-        newRow.insertCell(1).textContent = role;            
-        newRow.insertcell(2).textContent = email;
-
+          newRow.insertCell(0).textContent = name;
+          newRow.insertCell(1).textContent = role;            
+          newRow.insertCell(2).textContent = email.value.trim();
+          
         newRow.classList.add('new-row');
         setTimeout(() => {
             newRow.classList.remove('new-row');
