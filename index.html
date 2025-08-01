@@ -38,25 +38,28 @@
                 <li>React</li>
             </ul>
         </section>
+
+
 <section class="card">
-  <h3>Contact HR</h3>
-  <form>
-    <label for="emp-email">Your Email:</label>
+  <h3>Add Team Member</h3>
+  <form id="team-form">
+    <label for="emp-name">Name:</label>
+    <input type="name" id="emp-name" required />
+    <br><br>
+    <label for="emp-role">Role:</label>
+    <input type="text" id="emp-role" required />
+    <br><br>
+    <label for="emp-email">Email:</label>
     <input type="email" id="emp-email" required />
-
     <br><br>
-    <label for="emp-message">Message:</label>
-    <textarea id="emp-message" rows="3"></textarea>
-
-    <br><br>
-    <button type="submit">Send</button>
+    <button type="submit">Add to Directory</button>
   </form>
 </section>
 </div>
 
 <section>
   <h3>Team Directory</h3>
-  <table border="1">
+  <table id="team-table" border="1">
     <tr>
       <th>Name</th><th>Role</th><th>Email</th>
     </tr>
