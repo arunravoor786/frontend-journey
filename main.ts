@@ -18,7 +18,7 @@ function addTeamMember(team: Employee[], member: Employee): Employee[] {
 
 const newMember: Employee = {
     id: 3,
-    name: "Priya Sharma"
+    name: "Priya Sharma",
     role: "UI Designer",
     email: "priyasharma@gmail.com",
     isActive: true
