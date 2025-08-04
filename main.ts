@@ -1,38 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('team-form');
-    const table = document.getElementById('team-table');
+interface Employee {
+    name: string;
+    role: string;
+    email: string;
+    id: number;
+    isActive: boolean;
+}   
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        const name = document.getElementById('emp-name').value.trim();
-        const role = document.getElementById('emp-role').value.trim();
-        const email = document.getElementById('emp-email');
+const team: Employee[] = [
 
-        if (!name || !role || !email.value.trim()) {
-            alert('Please fill in all fields.');
-            return;
-        }
+    { id: 1, name: "ArunKumar", role: "Developer", email: "arunravur@gmail.com", isActive: true },
+    { id: 2, name: "Ashwin Ram", role: "VB-operations", email: "ashwinram@gmail.com", isActive: true },
+];
 
-        const emails = Array.from(table.querySelectorAll('td:nth-child(3)')).map(td => td.textContent);
-        if (emails.includes(email.value.trim())) {
-            alert('This email is already in the directory.');
-            return;
-        }
-        
-        const newRow = table.insertRow(-1);
-          newRow.insertCell(0).textContent = name;
-          newRow.insertCell(1).textContent = role;            
-          newRow.insertCell(2).textContent = email.value.trim();
-          
-        newRow.classList.add('new-row');
-        setTimeout(() => {
-            newRow.classList.remove('new-row');
-        }, 1000);
+function addTeamMember(team: Employee[], member: Employee): Employee[] {
+    return [...team, member];
+}
 
-        form.reset();
-        form.elements[0].focus(); 
+const newMember: Employee = {
+    id: 3,
+    name: "Priya Sharma"
+    role: "UI Designer",
+    email: "priyasharma@gmail.com",
+    isActive: true
+};
+const updatedTeam = addTeamMember(team, newMember);
 
-        alert('Team member added successfully!');   
-    });
-       
-    });
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+const a = identity<string>("Hello, TypeScript!");
+const b = identity<number>(100);
+
+interface Cardprops {
+    title: string;
+    content: string;
+}
+
+function Card({ title, content }: Cardprops) {
+    return `
+        <div className="card">
+            <h3>${title}</h3>
+            <p>${content}</p>
+        </div>
+    `;
+}
+
+function handleError(error: Error | null): void {
+if (error) {
+    console.error("An error occurred:", error.message);
+}
+}
