@@ -20,7 +20,7 @@ const TeamList: React.FC<TeamListProps> = ({ team, onAddMember, onDeleteMember, 
   const [editId, setEditId] = useState<number | null>(null);
   const [editForm, setEditForm] = useState({ name: '', role: '', email: '', isActive: true });
 
-  // Handle add form changes
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, isEdit = false) => {
     const { name, value } = e.target;
     if (isEdit) {
@@ -36,7 +36,7 @@ const TeamList: React.FC<TeamListProps> = ({ team, onAddMember, onDeleteMember, 
     }
   };
 
-  // Submit new member
+
   const submitMember = () => {
     if (!form.name || !form.role || !form.email) {
       alert('Fill all fields!');
@@ -46,7 +46,7 @@ const TeamList: React.FC<TeamListProps> = ({ team, onAddMember, onDeleteMember, 
     setForm({ name: '', role: '', email: '', isActive: true });
   };
 
-  // Start editing
+  
   const startEdit = (emp: Employee) => {
     setEditId(emp.id);
     setEditForm({
@@ -57,7 +57,7 @@ const TeamList: React.FC<TeamListProps> = ({ team, onAddMember, onDeleteMember, 
     });
   };
 
-  // Save edits
+  
   const saveEdit = (id: number) => {
     onEditMember({ ...editForm, id });
     setEditId(null);
@@ -65,7 +65,7 @@ const TeamList: React.FC<TeamListProps> = ({ team, onAddMember, onDeleteMember, 
 
   return (
     <div>
-      {/* Add Member Form */}
+     
       <input name="name" value={form.name} onChange={e => handleChange(e)} placeholder="Name" />
       <input name="role" value={form.role} onChange={e => handleChange(e)} placeholder="Role" />
       <input name="email" value={form.email} onChange={e => handleChange(e)} placeholder="Email" />

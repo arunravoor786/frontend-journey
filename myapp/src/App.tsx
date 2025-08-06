@@ -17,17 +17,17 @@ const initialTeam: Employee[] = [
 function App() {
   const [team, setTeam] = useState<Employee[]>(initialTeam);
 
-  // Add member (same as before)
+  
   const addMember = (member: Omit<Employee, 'id'>) => {
     setTeam(prev => [...prev, { ...member, id: Date.now() }]);
   };
 
-  // New: Delete member by id
+  
   const deleteMember = (id: number) => {
     setTeam(prev => prev.filter(emp => emp.id !== id));
   };
 
-  // New: Edit member by id (replace details)
+  
   const editMember = (edited: Employee) => {
     setTeam(prev => prev.map(emp => emp.id === edited.id ? edited : emp));
   };
