@@ -9,55 +9,49 @@ interface Employee {
 }
 
 const initialTeam: Employee[] = [
-  { id: 1, name: "ArunKumar", role: "Developer", email: "arunkumar@gmail.com", isActive: true },
-  { id: 2, name: "Ashwin Ram", role: "VB-operations", email: "ashwinram@gmail.com", isActive: true },
+  { id: 1, name: 'Arun Kumar', role: 'Frontend Developer', email: 'arun@example.com', isActive: true },
+  { id: 2, name: 'Ashwin Ram', role: 'VB Operations', email: 'ashwin@example.com', isActive: false }
 ];
 
-function App() {
+export default function App() {
+  
   const [team, setTeam] = useState<Employee[]>(initialTeam);
+  const [form, setForm] = useState({ name: '', role: '', email: '' });
 
-  const [newMember, setNewMember] = useState({ name: '', role: '', email: '' });
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewMember({
-      ...newMember,
-      [e.target.name]: e.target.value
-    });
-  };  
-
+  
   const addMember = () => {
-    if (!newMember.name || !newMember.role || !newMember.email) {
-      alert("Please fill all fields");
-      return;
-    }
-    const member: Employee = {
-      id: Date.now(),
-      ...newMember,
-      isActive: true
-    };
-    setTeam([...team, member]);
-    setNewMember({ name: '', role: '', email: '' });    
+    if (!form.name || !form.role || !form.email) return alert('All fields required!');
+    setTeam(prev => [
+      ...prev,
+      { id: Date.now(), name: form.name, role: form.role, email: form.email, isActive: true }
+    ]);
+    setForm({ name: '', role: '', email: '' }); // Reset form
   };
 
   return (
     <div>
       <h1>Team Directory</h1>
-     <input name="name" value={newMember.name} onChange={handlechange} placeholder="Name" />
-      <input name="role" value={newMember.role} onChange={handlechange} placeholder="Role" />
-      <input name="email" value={newMember.email} onChange={handlechange} placeholder="Email" />
-      <button onClick={addMember}>Add Member</button>
-      {team.map(member => (
-        <div key={member.id} className="card">
-          <h3>{member.name}</h3>
-          <p>Role: {member.role}</p>
-          <p>Email: {member.email}</p>
-          <p>Status: {member.isActive ? 'Active' : 'Inactive'}</p>
-        </div>
-      ))}
+      <div>
+        <input name="name" value={form.name} onChange={handleChange} placeholder="Name" />
+        <input name="role" value={form.role} onChange={handleChange} placeholder="Role" />
+        <input name="email" value={form.email} onChange={handleChange} placeholder="Email" />
+        <button onClick={addMember}>Add Member</button>
+      </div>
+      <div>
+        {team.map(member => (
+          <div key={member.id} className="card">
+            <h3>{member.name}</h3>
+            <p>Role: {member.role}</p>
+            <p>Email: {member.email}</p>
+            <p>Status: {member.isActive ? 'Active' : 'Inactive'}</p>
+          </div>
+        ))}
+      </div>
     </div>
-      
   );
 }
-
-
-export default App;
