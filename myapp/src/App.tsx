@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TeamList from './components/TeamList';
 
 interface Employee {
   id: number;
@@ -13,45 +14,35 @@ const initialTeam: Employee[] = [
   { id: 2, name: 'Ashwin Ram', role: 'VB Operations', email: 'ashwin@example.com', isActive: false }
 ];
 
-export default function App() {
-  
+function App() {
   const [team, setTeam] = useState<Employee[]>(initialTeam);
-  const [form, setForm] = useState({ name: '', role: '', email: '' });
 
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // Add member (same as before)
+  const addMember = (member: Omit<Employee, 'id'>) => {
+    setTeam(prev => [...prev, { ...member, id: Date.now() }]);
   };
 
-  
-  const addMember = () => {
-    if (!form.name || !form.role || !form.email) return alert('All fields required!');
-    setTeam(prev => [
-      ...prev,
-      { id: Date.now(), name: form.name, role: form.role, email: form.email, isActive: true }
-    ]);
-    setForm({ name: '', role: '', email: '' }); // Reset form
+  // New: Delete member by id
+  const deleteMember = (id: number) => {
+    setTeam(prev => prev.filter(emp => emp.id !== id));
+  };
+
+  // New: Edit member by id (replace details)
+  const editMember = (edited: Employee) => {
+    setTeam(prev => prev.map(emp => emp.id === edited.id ? edited : emp));
   };
 
   return (
     <div>
-      <h1>Team Directory</h1>
-      <div>
-        <input name="name" value={form.name} onChange={handleChange} placeholder="Name" />
-        <input name="role" value={form.role} onChange={handleChange} placeholder="Role" />
-        <input name="email" value={form.email} onChange={handleChange} placeholder="Email" />
-        <button onClick={addMember}>Add Member</button>
-      </div>
-      <div>
-        {team.map(member => (
-          <div key={member.id} className="card">
-            <h3>{member.name}</h3>
-            <p>Role: {member.role}</p>
-            <p>Email: {member.email}</p>
-            <p>Status: {member.isActive ? 'Active' : 'Inactive'}</p>
-          </div>
-        ))}
-      </div>
+      <h1>Team Directory (Day 14: Edit & Delete)</h1>
+      <TeamList
+        team={team}
+        onAddMember={addMember}
+        onDeleteMember={deleteMember}
+        onEditMember={editMember}
+      />
     </div>
   );
 }
+
+export default App;
