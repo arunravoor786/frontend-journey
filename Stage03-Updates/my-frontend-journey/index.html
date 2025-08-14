@@ -280,5 +280,68 @@
         <p>&copy; 2025 Arunkumar R.M. - Day 1 HTML Foundations</p>
         <p>Last updated: August 11, 2025, 8:21 PM IST</p>
     </footer>
+
+    <!-- Add these script tags just before </body> in index.html -->
+
+<!-- DOM Utilities (loaded first) -->
+<script src="js/dom-utils.js"></script>
+
+<!-- Main Application (loaded after utilities) -->
+<script src="js/main.js"></script>
+
+<!-- Add loading state classes -->
+<script>
+    // Add loading classes to elements that will animate
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mark timeline items for animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach((item, index) => {
+            item.classList.add('scroll-animate');
+            item.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Mark skill table rows for animation
+        const skillRows = document.querySelectorAll('.skills-table tbody tr');
+        skillRows.forEach((row, index) => {
+            row.classList.add('scroll-animate');
+            row.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Add progress indicators to any elements with data-progress
+        const aboutSection = document.querySelector('#about');
+        if (aboutSection) {
+            // Add a progress demonstration
+            const progressDemo = document.createElement('div');
+            progressDemo.innerHTML = `
+                <h3>Learning Progress Demo</h3>
+                <div style="margin: 20px 0;">
+                    <div style="margin-bottom: 10px;">
+                        <span>HTML5 Mastery</span>
+                        <div style="background: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div data-progress="85" style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); height: 100%; width: 0%; transition: width 2s ease-out;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <span>CSS3 Skills (Today)</span>
+                        <div style="background: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div data-progress="70" style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); height: 100%; width: 0%; transition: width 2s ease-out;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <span>JavaScript Fundamentals (Today)</span>
+                        <div style="background: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div data-progress="60" style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); height: 100%; width: 0%; transition: width 2s ease-out;"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            aboutSection.appendChild(progressDemo);
+        }
+    });
+</script>
+
+</body>
+</html>
+
 </body>
 </html>
