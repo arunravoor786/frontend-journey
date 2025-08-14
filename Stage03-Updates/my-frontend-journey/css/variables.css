@@ -1,0 +1,88 @@
+
+:root {
+    /* 🎨 COLOR PALETTE */
+    --primary-color: #2563eb;      /* Professional blue */
+    --primary-light: #3b82f6;     /* Lighter blue for hover */
+    --primary-dark: #1d4ed8;      /* Darker blue for active */
+    
+    --secondary-color: #7c3aed;   /* Purple accent */
+    --secondary-light: #8b5cf6;   /* Light purple */
+    --secondary-dark: #6d28d9;    /* Dark purple */
+    
+    --success-color: #10b981;     /* Green for success states */
+    --warning-color: #f59e0b;     /* Orange for warnings */
+    --error-color: #ef4444;       /* Red for errors */
+    
+    /* 🌓 NEUTRAL COLORS */
+    --text-primary: #111827;      /* Almost black for main text */
+    --text-secondary: #6b7280;    /* Gray for secondary text */
+    --text-muted: #9ca3af;        /* Light gray for muted text */
+    
+    --bg-primary: #ffffff;        /* White background */
+    --bg-secondary: #f9fafb;      /* Light gray background */
+    --bg-tertiary: #f3f4f6;       /* Lighter gray for cards */
+    
+    --border-color: #e5e7eb;      /* Light border */
+    --border-hover: #d1d5db;      /* Darker border on hover */
+    
+    /* 📏 SPACING SYSTEM (8px base) */
+    --space-xs: 0.25rem;    /* 4px */
+    --space-sm: 0.5rem;     /* 8px */
+    --space-md: 1rem;       /* 16px */
+    --space-lg: 1.5rem;     /* 24px */
+    --space-xl: 2rem;       /* 32px */
+    --space-2xl: 3rem;      /* 48px */
+    --space-3xl: 4rem;      /* 64px */
+    
+    /* 📝 TYPOGRAPHY */
+    --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    --font-family-mono: 'Fira Code', 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+    
+    --font-size-xs: 0.75rem;     /* 12px */
+    --font-size-sm: 0.875rem;    /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;    /* 18px */
+    --font-size-xl: 1.25rem;     /* 20px */
+    --font-size-2xl: 1.5rem;     /* 24px */
+    --font-size-3xl: 1.875rem;   /* 30px */
+    --font-size-4xl: 2.25rem;    /* 36px */
+    
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* 🎭 SHADOWS */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* 🔄 TRANSITIONS */
+    --transition-fast: 0.15s ease-out;
+    --transition-normal: 0.3s ease-out;
+    --transition-slow: 0.5s ease-out;
+    
+    /* 📱 BREAKPOINTS */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+}
+
+/* 🌙 DARK MODE VARIABLES */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        
+        --border-color: #4b5563;
+        --border-hover: #6b7280;
+    }
+}
