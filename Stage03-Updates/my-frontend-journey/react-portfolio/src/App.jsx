@@ -12,6 +12,7 @@ function App() {
     // Concept: Store component data that can change
     // Execution: useState hook creates reactive state
     const [theme, setTheme] = useState('light');
+     
     const [activeSection, setActiveSection] = useState('about');
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
 
@@ -23,7 +24,7 @@ function App() {
         title: 'Frontend Developer in Training',
         age: 32,
         location: 'India',
-        email: 'arunkumar@example.com',
+        email: 'arunkumar@gmail.com.',
         currentStage: 'Day 3 - React Fundamentals'
     };
 
@@ -55,6 +56,16 @@ function App() {
         console.log('🎨 Theme toggle clicked, current theme:', theme);
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
+        //[{row1}, {row2}]'
+
+        setRow((row)=>{
+            return !row;
+        })
+        setRow((row)=>{
+            return [{row2}, ...row]
+
+        })
+        setRow([{row2}, ...row])
         console.log('🎨 Theme changed to:', newTheme);
     };
 
@@ -183,7 +194,7 @@ function AboutSection({ userData }) {
                 <figure className="profile-figure">
                     <img 
                         src="/images/profile-photo.jpg"
-                        alt={`${userData.name} smiling confidently, ready to learn frontend development`}
+                        alt={`${userData.name} Ready to learn frontend development`}
                         width="200"
                         height="200"
                         loading="lazy"
@@ -193,7 +204,7 @@ function AboutSection({ userData }) {
                 
                 <div className="about-text">
                     <p>
-                        Hello! I'm <strong>{userData.name}</strong>, a {userData.age}-year-old 
+                        Hello! I'm <strong>{userData.name}</strong>,  
                         aspiring frontend developer from {userData.location}. Today marks an 
                         exciting milestone in my intensive <strong>5-day journey</strong> to 
                         master modern web development.
@@ -222,7 +233,7 @@ function TimelineSection() {
     const timelineData = [
         {
             day: 1,
-            date: '2025-08-11',
+            date: '2025-08-16',
             title: 'HTML5 Foundations',
             status: 'completed',
             topics: [
@@ -234,7 +245,7 @@ function TimelineSection() {
         },
         {
             day: 2,
-            date: '2025-08-12', 
+            date: '2025-08-17', 
             title: 'CSS3 + JavaScript Foundations',
             status: 'completed',
             topics: [
@@ -246,7 +257,7 @@ function TimelineSection() {
         },
         {
             day: 3,
-            date: '2025-08-14',
+            date: '2025-08-18',
             title: 'React Fundamentals',
             status: 'current',
             topics: [
@@ -258,7 +269,7 @@ function TimelineSection() {
         },
         {
             day: 4,
-            date: '2025-08-15',
+            date: '2025-08-19',
             title: 'Advanced React + Performance',
             status: 'upcoming',
             topics: [
@@ -270,7 +281,7 @@ function TimelineSection() {
         },
         {
             day: 5,
-            date: '2025-08-16',
+            date: '2025-08-20',
             title: 'Production Ready Stack',
             status: 'future',
             topics: [
@@ -345,8 +356,7 @@ function TimelineItem({ day, date, title, status, topics }) {
             <p>Interactive skills display coming in next session!</p>
         </section>
     );
-}
-*/
+}*/
 
 // Replace the SkillsSection component with this enhanced version
 
@@ -609,7 +619,6 @@ function SkillsSummary({ skills }) {
 }
 
 
-
 // 💼 PROJECTS SECTION COMPONENT (Simplified for now)
 // Concept: Portfolio projects display
 // Execution: Static component for now
@@ -638,8 +647,7 @@ function ProjectsSection() {
             <p>Interactive contact form coming in next session!</p>
         </section>
     );
-}
-*/
+}*/
 
 // Replace ContactSection with this enhanced version
 
@@ -983,8 +991,7 @@ function SuccessMessage({ onStartOver }) {
             <div className="success-icon">✅</div>
             <h3>Message Sent Successfully!</h3>
             <p>
-                Thank you for reaching out! I appreciate your interest in connecting. 
-                I'll get back to you as soon as possible, usually within 24 hours.
+                Thank you for reaching out.
             </p>
             <p>
                 In the meantime, feel free to follow my learning journey and 
